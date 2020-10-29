@@ -39,6 +39,7 @@ jobs:
     steps:
       - checkout
       - install
+      - test
       - build
         
 workflows:
