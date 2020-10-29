@@ -1,15 +1,45 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-  
+
+commands:
+  build:
+    description: |
+      Create a production build
+    steps:
+      - run:
+          command: mkdir -p artifacts
+          name: Ensure artifacts directory is present
+      - run: NODE_ENV=production npm run build
+      - run: cp -r build artifacts
+
+  install:
+    description: |
+      Install dependencies
+    steps:
+      - run: npm install
+
+  test:
+    description: |
+      Run tests using Jest
+    steps:
+      - run:
+          command: npm add --save-dev jest-junit
+          name: Install JUnit reporter
+      - run:
+          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+          name: Run tests with JUnit as reporter
+
 jobs:
   build:
     docker:
       - image: circleci/node:14-browsers
     steps:
       - checkout
-      - run: npm install
-      - run: npm run build
+      - install
+      - build
         
 workflows:
   build:
