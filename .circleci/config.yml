@@ -34,6 +34,17 @@ commands:
       - store_test_results:
           path: junit.xml
 
+  sync-to-s3:
+    description: |
+      Sync files to s3 bucket
+    steps:
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=86400"
+          from: build
+          to: 's3:/react-deploy-pipeline'
+
 jobs:
   build-job:
     docker:
@@ -44,6 +55,7 @@ jobs:
       - install
       - test
       - build
+      - sync-to-s3
 
 workflows:
   build:
