@@ -30,7 +30,7 @@ commands:
           name: Run tests with JUnit as reporter
 
 jobs:
-  build:
+  build-job:
     docker:
       - image: circleci/node:14-browsers
     steps:
@@ -42,5 +42,5 @@ jobs:
 workflows:
   build:
     jobs:
-      - build
+      - build-job
 
