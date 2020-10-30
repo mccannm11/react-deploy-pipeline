@@ -13,7 +13,7 @@ commands:
       - run: NODE_ENV=production npm run build
       - run: cp -r build artifacts
       - store_artifacts:
-          path: /artifacts/build
+          path: /artifacts
 
   install:
     description: |
