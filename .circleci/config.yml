@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+  aws-s3: circleci/aws-s3@2.0.0
 
 commands:
   build:
@@ -37,12 +38,12 @@ jobs:
   build-job:
     docker:
       - image: circleci/node:14-browsers
+    resource_class: small
     steps:
       - checkout
       - install
       - test
       - build
-
 
 workflows:
   build:
