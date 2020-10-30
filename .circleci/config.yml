@@ -10,6 +10,9 @@ commands:
       - run:
           command: mkdir -p artifacts
           name: Ensure artifacts directory is present
+      - run:
+          command: pwd
+          name: where am i?
       - run: NODE_ENV=production npm run build
       - run: cp -r build artifacts
       - store_artifacts:
