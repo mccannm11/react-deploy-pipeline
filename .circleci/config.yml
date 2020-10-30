@@ -31,7 +31,7 @@ commands:
             JEST_JUNIT_OUTPUT: /tmp/reports/junit/js-test-results.xml
           name: Run tests with JUnit as reporter
       - store_artifacts:
-          path: /tmp/reports/junit/js-test-results.xml
+          path: /tmp/reports/junit
 
 
 jobs:
