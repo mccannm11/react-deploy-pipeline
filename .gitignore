@@ -6,6 +6,8 @@
 .pnp.js
 /.idea
 
+junit.xml
+
 # testing
 /coverage
 
