@@ -31,7 +31,7 @@ commands:
             JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
           name: Run tests with JUnit as reporter
       - run:
-          - command: ls -l
+          command: ls -l
       - store_test_results:
           path: reports
       - store_artifacts:
