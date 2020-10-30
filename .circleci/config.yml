@@ -37,6 +37,10 @@ jobs:
       - image: circleci/node:14-browsers
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - m2-{{ checksum "package-lock.json" }}
+
       - install
       - test
       - build
