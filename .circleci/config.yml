@@ -24,10 +24,7 @@ commands:
       Run tests using Jest
     steps:
       - run:
-          command: npm add --save-dev jest-junit
-          name: Install JUnit reporter
-      - run:
-          command: npm test --ci --runInBand --reporters=default --reporters=jest-junit
+          command: npm run test --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
           name: Run tests with JUnit as reporter
